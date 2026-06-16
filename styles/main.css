@@ -1,0 +1,307 @@
+.rate-high {
+    font-weight: bold;
+    color: #4eda92
+}
+
+.rate-middle {
+    font-weight: bold;
+    color: #c9ea11
+}
+
+.rate-low {
+    color: #ef1c26
+}
+
+.active-item {
+    background-color: #555 !important
+}
+/********************************************** banners *************************************************/
+/* адаптивный баннер */
+#fixedbanner1 {
+    position: fixed;
+    top: 100px;
+    right: 0;
+    z-index: 10;
+    box-shadow: inset 0px 0px 10px 10px #121212;
+ }
+ #fixedbanner2 {
+    position: fixed;
+    top: 520px;
+    right: 0;
+    z-index: 10;
+    box-shadow: inset 0px 0px 10px 10px #121212;
+ }
+ #fixedbanner3 {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    z-index: 10;
+    box-shadow: inset 0px 0px 10px 10px #121212;
+ }
+ #fixedbanner4 {
+    position: fixed;
+    top: 520px;
+    left: 0;
+    z-index: 10;
+    box-shadow: inset 0px 0px 10px 10px #121212;
+ }
+ /* адаптивный баннер */
+  /* кнопка закрыть */
+ .close-block {
+    display: block;
+    position: absolute;
+    top: -9px;
+    right: 1px;
+    width: 16px;
+    height: 16px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAElBMVEXqAAD8oaH/AAD/ra3/vr7///91+I/7AAAAQklEQVR42oXPwQoAIAgD0JXu/385FfTQgnYweKAp9pUXmE+swAFWAG8owQBTqjQQ8SQOcAdRQVtkqHy7dDFd/X/tAVqqAopyUfkOAAAAAElFTkSuQmCC);
+    cursor: pointer;
+  }
+/* кнопка закрыть */
+@media screen and (max-width: 600px) {
+    #fixedbanner1 {
+      visibility: hidden;
+      display: none;
+    }
+    #fixedbanner2 {
+        visibility: hidden;
+        display: none;
+      }
+    #fixedbanner3 {
+        visibility: hidden;
+        display: none;
+      }
+    #fixedbanner4 {
+        visibility: hidden;
+        display: none;
+      }
+  }
+/********************************************** banners *************************************************/
+
+.hidden {
+    display: none
+}
+
+.films #SortFilms {
+    position: relative;
+    margin-top: -25px;
+    text-align: right
+}
+
+.films #SortFilms .sort__toggle {
+    color: #ccc;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.films #SortFilms .sort__toggle .material-icons {
+    vertical-align: middle
+}
+
+.films #SortFilms .sort__toggle .sort__toggle_caption {
+    font-size: 14px;
+    font-weight: bold
+}
+
+.films #SortFilms .sort__films {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    display: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 3px;
+    font-size: 13px;
+    text-align: left;
+    list-style: none;
+    z-index: 3;
+    overflow: hidden
+}
+
+.films #SortFilms .sort__films .sort__films_item a {
+    display: block;
+    padding: 12px 20px;
+    background-color: #232323;
+    cursor: pointer
+}
+
+.films #SortFilms .sort__films .sort__films_item a:hover {
+    background-color: #181818
+}
+
+.films #SortFilms #sort-submit {
+    display: none
+}
+
+.films .films__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.films .films__list .films__list_item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    min-width: 250px;
+    max-width: 350px;
+    margin: 10px;
+    background-color: #232323;
+    border-radius: 3px;
+    overflow: hidden
+}
+
+.films .films__list .films__list_item .film__box:not(.film__visited):hover .film__background .film__background_image {
+    opacity: .5;
+    transition: all .3s ease-in-out
+}
+
+.films .films__list .films__list_item .film__box:not(.film__visited):hover .film__background .film__background_play {
+    opacity: .8;
+    width: 64px;
+    transition: all .3s ease-in-out
+}
+
+.films .films__list .films__list_item .film__box:not(.film__visited):hover .film__background .film__background_time {
+    opacity: 1;
+    transition: all .3s ease-in-out
+}
+
+.films .films__list .films__list_item .film__box .film__background {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 330px;
+    max-height: 330px;
+    overflow: hidden
+}
+
+.films .films__list .films__list_item .film__box .film__background .film__background_image {
+    width: 100%
+}
+
+.films .films__list .films__list_item .film__box .film__background .film__background_play {
+    position: absolute;
+    width: 50px;
+    opacity: 0
+}
+
+.films .films__list .films__list_item .film__box .film__background .film__background_time {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 2px 3px;
+    font-size: 12px;
+    background-color: #ef1c26;
+    border-radius: 3px;
+    opacity: .5
+}
+
+.films .films__list .films__list_item .film__box .film__content {
+    padding: 10px
+}
+
+.films .films__list .films__list_item .film__box .film__content .film__primary,
+.films .films__list .films__list_item .film__box .film__content .film__secondary {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px
+}
+
+.films .films__list .films__list_item .film__box .film__content .film__primary {
+    margin-bottom: 3px
+}
+
+.films .films__list .films__list_item .film__box .film__content .film__secondary {
+    color: #ccc
+}
+
+.films .films__list .films__list_item .film__box .film__content .film__content_name {
+    margin: 0;
+    margin-bottom: 8px;
+    height: 19px;
+    font-size: 16px;
+    overflow: hidden
+}
+
+.films .films__list .films__list_item .film__box .film__content .material-icons {
+    font-size: 16px
+}
+
+.films .films__list .films__list_item .film__visited {
+    mix-blend-mode: luminosity;
+    opacity: .3
+}
+
+.pagination {
+    margin-bottom: 10px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333
+}
+
+.pagination .pagination__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.pagination .pagination__list .pagination__list_item {
+    margin-top: 15px
+}
+
+.pagination .pagination__list .pagination__list_item a {
+    padding: 5px 15px;
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 3px;
+    background-color: #232323
+}
+
+.pagination .pagination__list .pagination__list_item a:hover {
+    background-color: #ef1c26
+}
+
+.about .about__description {
+    columns: 300px 3;
+    column-gap: 30px
+}
+
+.about .about__description .about__description_content {
+    margin: 0;
+    color: #555
+}
+
+@media(max-width:862px) {
+    #SortFilms {
+        margin-top: -32px !important
+    }
+
+    #SortFilms .sort__toggle .material-icons {
+        font-size: 36px
+    }
+
+    #SortFilms .sort__toggle .sort__toggle_caption {
+        display: none
+    }
+
+    #SortFilms .sort__films {
+        top: 40px !important;
+        font-size: 14px !important
+    }
+}
+

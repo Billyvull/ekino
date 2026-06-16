@@ -1,0 +1,93 @@
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
+#  Включение mod_rewrite, Слейка HTML
+RewriteEngine On
+RewriteRule ^index.html$ / [R=301,L] #дубль с index.html на /
+Options +Indexes
+Options +FollowSymLinks
+RewriteBase /
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^.*$ $0.php [L,QSA]
+RewriteCond %{THE_REQUEST} ([^\s]*)\.php(\?[^\s]*)?
+RewriteRule (.*) %1 [R=301,L]
+
+Redirect 301 /actual/ http://ekino.me/actual
+Redirect 301 /boevik/ http://ekino.me/boevik
+Redirect 301 /drama/ http://ekino.me/drama
+Redirect 301 /detektiv/ http://ekino.me/detektiv
+Redirect 301 /komediya/ http://ekino.me/komediya
+Redirect 301 /krimial/ http://ekino.me/krimial
+Redirect 301 /melodrama/ http://ekino.me/melodrama
+Redirect 301 /multfilm/ http://ekino.me/multfilm
+Redirect 301 /realfilm/ http://ekino.me/realfilm
+Redirect 301 /priklyucheniya/ http://ekino.me/priklyucheniya
+Redirect 301 /triller/ http://ekino.me/triller
+Redirect 301 /uzhasy/ http://ekino.me/uzhasy
+Redirect 301 /fantastika/ http://ekino.me/fantastika
+
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !\?
+RewriteCond %{REQUEST_URI} !\&
+RewriteCond %{REQUEST_URI} !\=
+RewriteCond %{REQUEST_URI} !\.
+RewriteCond %{REQUEST_URI} ![^\/]$
+RewriteRule ^(.*)\/$ /$1 [R=301,L]
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.ekino.me$ [NC]
+RewriteRule ^(.*)$ http://ekino.me/$1 [R=301,L]
+
+RewriteEngine on
+ErrorDocument 404 https://ekino.me/404.html
+
+Options +FollowSymLinks
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.php [F,L]
+
+Options +FollowSymLinks
+RewriteCond %{HTTP_HOST} !^ekino\.me$ [NC]
+RewriteRule ^(.*)$ https://ekino.me/$1 [R=301,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^search?$	search.php [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]*)/?$	single.php?url=$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(([^/]+/)*[^.]+)$ /$1.php [L]
+RewriteCond %{REQUEST_URI} ^/index$ [OR]
+RewriteCond %{REQUEST_URI} ^/index[.]+(\w+)$
+RewriteRule . / [R=301,L]
+
+RewriteCond %{ENV:HTTPS} !on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Включаем кэш в браузерах посетителей
+<ifModule mod_headers.c>
+# Все html и htm файлы будут храниться в кэше браузера один день
+<FilesMatch "\.(html|htm)$">
+Header set Cache-Control "max-age=43200"
+</FilesMatch>
+# Все css, javascript и текстовые файлы будут храниться в кэше браузера одну неделю
+<FilesMatch "\.(js|css|txt)$">
+Header set Cache-Control "max-age=25920000"
+</FilesMatch>
+# Все флэш файлы и изображения будут храниться в кэше браузера один месяц
+<FilesMatch "\.(flv|swf|ico|gif|jpg|jpeg|png)$">
+Header set Cache-Control "max-age=45920000"
+</FilesMatch>
+# Отключаем кеширование php и других служебных файлов
+<FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
+Header unset Cache-Control
+</FilesMatch>
+</IfModule>
